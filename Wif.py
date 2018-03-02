@@ -16,15 +16,20 @@ import WifHelper
 target_address = "DDNXza8p38Np4Y3coZ4YU1RhzWieRHmaUf"
 # The first parts of the WIF, ordered, if you are sure of them.
 # Starts either with Q (compressed) or 6 (uncompressed).
-# If you are unsure, set to "" and add it to middle.
+# If you are unsure, set to [""] and add them to middle.
 head = ["QCD6"]
 # The last parts of the WIF, ordered if you are sure of them.
-# If you are unsure, set to "" and add it to middle.
+# If you are unsure, set to [""] and add them to middle.
 tail = ["Thw"]
 # All the parts that you can't sort.
 middle = ["5bjQ", "nZeL", "7KHH", "ThM1", "6KdJ", "JgNW", "pad7", "63zB", "gCMg", "1cje", "AKZ7"]
 # Warning, in the case of the address in this script, we are unsure of the head and tail.
 # The above values are used as examples.
+
+# The script will show status each number of checked private keys. Set verbosity to define that interval.
+# If your CPU is fast, you may want to set that to something higher,
+# in a way that you get less messages in a period of time.
+verbosity = 1e4
 
 
 # Convert a WIF key to a private key
@@ -92,7 +97,7 @@ if __name__ == "__main__":
 			except:
 				_address = ""
 			i+=1
-			if i % 1e4 == 0: # log / depending on your CPU, make this larger (faster CPU) to reduce verbosity
+			if i % verbosity == 0: # log / depending on your CPU, make this larger (faster CPU) to reduce verbosity
 				out = ("{0} | {1:10,} tested combinations ({2:.2f}%)".format(
 					datetime.fromtimestamp(time.time()).strftime("%Y-%m-%dT%H:%M:%SZ"),
 					i,
