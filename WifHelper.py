@@ -1,10 +1,7 @@
 import ecdsa
-import ecdsa.der
-import ecdsa.util
 import hashlib
 import os
-import re
-import struct
+
 
 b58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
 
